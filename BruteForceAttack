@@ -1,0 +1,50 @@
+/////////////////////////////////////////
+/////////DAVID EDWARD ZUMERLE////////////
+/////////STUDENT ID: 575808//////////////
+///////COMPUTING YEAR 1 SEM 1////////////
+/////////////////////////////////////////
+/*You are an inexperienced hacker trying to find the correct password to enter a safe...
+
+Write a programme that defines the correct password as 12345, and allows users to enter password attempts until 
+they reach the correct answer.
+Your programme should use a while loop to allow the user to keep entering password attempts until correct. 
+Once the correct password is entered the program should output an appropriate message e.g "Welcome to the Secure Area"
+Optional Requirements
+Modify the solution to Brute-Force Attack to include a maximum of 5 password attempts. 
+Each time the user enters an incorrect password, they should be told how many password attempts remain. 
+If there are 5 failed password attempts the while loop should end and the program should inform the user 
+that the authorities have been alerted!*/
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int correctPassword = 12345;//variable for the correct password
+    int userInput;//variable to store the input from user
+    int attemptsLeft = 5;//number of attempts
+    
+    cout << "Enter the password to access the safe:\n";
+    //outer while loop that check to see if you have attempts left 
+    while (attemptsLeft > 0) {
+        cout << "Password: ";
+        cin >> userInput;//password input from user
+        
+        //inner if/else loop that check if you entered the correct password
+        if (userInput == correctPassword) {
+            //if you enter the correct password you get the message below
+            cout << "Welcome to the Secure Area!" << endl;
+            break;
+            //if you get the password wrong it moves to the else part of the loop
+        } else {
+            //removes one attempt 
+            attemptsLeft--;
+            //last inner if/else loop to check if you have any remaining attempts left or used to many attempts
+            if (attemptsLeft > 0) {
+                cout << "Incorrect password. Attempts remaining: " << attemptsLeft << endl;
+            } else {
+                cout << "Too many failed attempts. The authorities have been alerted!" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
